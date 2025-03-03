@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Registry Launch</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, #1e3c72, #2a5298, #000);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            transition: opacity 1.5s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            transition: opacity 1.5s ease;
+        }
+        .launch-btn {
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            border: none;
+            padding: 20px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 114, 255, 0.8);
+            position: relative;
+        }
+        .launch-btn:active {
+            transform: scale(0.9);
+            box-shadow: 0 3px 10px rgba(0, 114, 255, 0.8);
+        }
+        .fade-out {
+            opacity: 0;
+            transform: scale(1.2);
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+        .countdown {
+            font-size: 50vh;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80vh;
+            height: 80vh;
+        }
+        .visible {
+            opacity: 1 !important;
+        }
+        .loading-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 95vh;
+            height: 95vh;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            border: 10px solid rgba(255, 255, 255, 0.3);
+            border-top: 10px solid white;
+            opacity: 0;
+            visibility: hidden;
+        }
+        @keyframes spinner {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        .show-loading {
+            opacity: 1;
+            visibility: visible;
+            animation: spinner 1s linear infinite;
+        }
+        .explosion {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(100, 200, 255, 1) 10%, rgba(50, 150, 255, 0.8) 40%, rgba(0, 0, 0, 0) 70%);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .show-explosion {
+            opacity: 1;
+            transform: scale(3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <h1>Welcome to the Supplier Registry</h1>
+        <p>Click the button below to begin.</p>
+        <button class="launch-btn" id="launchBtn" onclick="startCountdown()">🚀 Launch</button>
+        <audio id="fanfare" src="fanfare.mp3"></audio>
+    </div>
+    <div class="loading-circle" id="loadingCircle"></div>
+    <div class="countdown" id="countdown"></div>
+    <div class="explosion" id="explosion"></div>
+    <script>
+        function startCountdown() {
+            let countdownElement = document.getElementById('countdown');
+            let loadingCircle = document.getElementById('loadingCircle');
+            let container = document.getElementById('container');
+            let launchBtn = document.getElementById('launchBtn');
+            let count = 5;
+            
+            countdownElement.classList.add('visible');
+            countdownElement.innerText = count;
+            container.classList.add('fade-out');
+            launchBtn.style.display = 'none'; // Hide the button
+            loadingCircle.classList.add('show-loading'); // Show the spinner
+            
+            let interval = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownElement.innerText = count;
+                } else {
+                    clearInterval(interval);
+                    countdownElement.innerHTML = `<span style="font-size: 10vh;">Loading...</span>`;
+                    setTimeout(() => {
+                        countdownElement.classList.add('fade-out');
+                        playFanfare();
+                    }, 500);
+                }
+            }, 1000);
+        }
+
+        function playFanfare() {
+            let audio = document.getElementById('fanfare');
+            let body = document.body;
+            let explosion = document.getElementById('explosion');
+            
+            audio.play();
+            explosion.classList.add('show-explosion');
+            
+            setTimeout(() => {
+                body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'http://20.188.121.247/';
+                }, 1500);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

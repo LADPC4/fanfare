@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .btn-list {
+            list-style: none;
+            padding: 0;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .btn-list li {
+            margin-bottom: 10px;
+        }
+        .btn-basic {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+        .btn-basic:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Button Showcase</h2>
+    <ul class="btn-list">
+        <li><button class="btn-basic" onclick="location.href='http://127.0.0.1:5500/sample-1.html';">Sample-1 (Spark)</button></li>
+        <li><button class="btn-basic" onclick="location.href='http://127.0.0.1:5500/sample-2.html';">Sample-2 (Countdown)</button></li>
+        <li><button class="btn-basic" onclick="location.href='http://127.0.0.1:5500/sample-3.html';">Sample-3 (Big Button)</button></li>
+        <li><button class="btn-basic">Sample-4</button></li>
+        <li><button class="btn-basic">Sample-5</button></li>
+        <li><button class="btn-basic">Sample-6</button></li>
+    </ul>
+
+</body>
+</html>
