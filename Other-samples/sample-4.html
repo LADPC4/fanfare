@@ -6,6 +6,9 @@
     <title>Supplier Registry Launch</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevents scrolling */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -121,8 +124,8 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            /* pointer-events: none;
-            overflow: hidden; */
+            pointer-events: none;
+            overflow: hidden;
         }
         .spark {
             position: absolute;
@@ -147,6 +150,8 @@
     <div class="countdown" id="countdown"></div>
     <div class="explosion" id="explosion"></div>
     <div class="fireworks" id="fireworks"></div>
+    
+    <img id="screenshot" src="screenshot.png" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; opacity: 0; transition: opacity 1.5s ease;">
     <script>
         function startCountdown() {
             let countdownElement = document.getElementById('countdown');
@@ -186,14 +191,46 @@
             explosion.classList.add('show-explosion');
             launchFireworks();
             launchConfetti();
-            
+
+            // After 1.5s, fade in the screenshot
             setTimeout(() => {
-                body.classList.add('fade-out');
-                setTimeout(() => {
-                    window.location.href = 'http://20.188.121.247/';
-                }, 1500);
+                screenshot.style.opacity = "1"; // Fade in the screenshot
             }, 1500);
+
+            // After 3s, redirect to the real webpage
+            setTimeout(() => {
+                window.location.href = 'http://20.188.121.247/';
+            }, 3000);
+            
         }
+
+        // function playFanfare() {
+        //     let audio = document.getElementById('fanfare');
+        //     let explosion = document.getElementById('explosion');
+        //     let fireworks = document.getElementById('fireworks');
+        //     let screenshot = document.getElementById('screenshot');
+        //     let whiteOverlay = document.getElementById('whiteOverlay');
+
+        //     audio.play();
+        //     explosion.classList.add('show-explosion');
+        //     launchFireworks();
+        //     launchConfetti();
+
+        //     // Fade in the screenshot smoothly
+        //     setTimeout(() => {
+        //         screenshot.style.opacity = "1";
+        //     }, 800);
+
+        //     // Show the white overlay before fading the screenshot
+        //     setTimeout(() => {
+        //         whiteOverlay.style.opacity = "1";
+        //     }, 2500);
+
+        //     // Redirect once the white screen is fully visible
+        //     setTimeout(() => {
+        //         window.location.href = 'http://20.188.121.247/';
+        //     }, 4000);
+        // }
 
         function launchFireworks() {
             for (let i = 0; i < 50; i++) {
