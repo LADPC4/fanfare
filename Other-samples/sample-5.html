@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Registry Launch</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, #8b0000, #b22222, #000);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            transition: opacity 1.5s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            position: relative;
+            z-index: 10;
+            transition: opacity 1.5s ease;
+        }
+        .launch-btn {
+            background: linear-gradient(45deg, #ff0000, #b22222);
+            border: none;
+            width: 160px;
+            height: 160px;
+            font-size: 30px;
+            font-weight: bold;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .launch-btn:active {
+            transform: translate(-50%, -50%) scale(0.9);
+            box-shadow: 0 3px 10px rgba(255, 0, 0, 0.8);
+        }
+        .countdown {
+            font-size: 10vh;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .visible {
+            opacity: 1;
+        }
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5vh;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .show-loading {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <button class="launch-btn" id="launchBtn" onclick="startCountdown()" style="font-size: 25vh; width: 50vh; height: 50vh;">🚀</button>
+        <div id="countdown" class="countdown"></div>
+        <div id="loadingCircle" class="loading">⏳ Loading...</div>
+        <audio id="fanfare" src="voice.mp3"></audio>
+    </div>
+    <script>
+        function startCountdown() {
+            let countdownElement = document.getElementById('countdown');
+            let container = document.getElementById('container');
+            let launchBtn = document.getElementById('launchBtn');
+            let loadingCircle = document.getElementById('loadingCircle');
+            let count = 5;
+            
+            countdownElement.classList.add('visible');
+            countdownElement.innerText = count;
+            launchBtn.style.display = 'none';
+            loadingCircle.classList.add('show-loading');
+            
+            let interval = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownElement.innerText = count;
+                } else {
+                    clearInterval(interval);
+                    countdownElement.innerHTML = `<span style="font-size: 10vh;">Launching...</span>`;
+                    setTimeout(() => {
+                        countdownElement.classList.remove('visible');
+                        loadingCircle.classList.remove('show-loading');
+                        playFanfare();
+                    }, 1000);
+                }
+            }, 1000);
+        }
+        
+        function playFanfare() {
+            document.getElementById('fanfare').play();
+        }
+    </script>
+</body>
+</html>
