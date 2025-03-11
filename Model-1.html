@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>Supplier Registry</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
+    <link rel="icon" href="data:,">
+    <script defer src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+
+    <style>
+        .hover-animate {
+            transition: transform 0.2s ease-in-out;
+        }
+        .hover-animate:hover {
+            transform: scale(1.03);
+        }
+        /* Modern navbar */
+        .nav-bg {
+            background: linear-gradient(135deg, #1E3A8A, #2563EB);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+            transition: color 0.3s ease-in-out;
+        }
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 50%;
+            background-color: white;
+            transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        /* CTA Button */
+        .cta-btn {
+            background: white;
+            color: #2563EB;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
+        }
+        .cta-btn:hover {
+            background: #E0E7FF;
+            transform: scale(1.05);
+        }
+        /* Enhanced Main Background */
+        .main-bg {
+            background: linear-gradient(to bottom, #F8FAFC, #E3E8F0);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased h-screen flex flex-col min-h-screen">
+    <nav class="nav-bg text-white shadow-md" style="padding: 8px 0 8px 0;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="{{ route('welcome') }}" class="flex items-center space-x-2">
+                <!-- <img src="{{ asset('images/DepEd-WLogo.png') }}" alt="Logo" class="h-12 max-h-12 w-auto"> -->
+                <img src="DepEd-WLogo.png" style="height: 3rem; max-height: 3rem; width: auto;">
+                <span class="text-2xl font-bold tracking-wide">
+                    Supplier Registry
+                </span>
+            </a>
+
+            <div class="hidden sm:flex items-center space-x-6">
+                <a href="{{ route('contact') }}" class="nav-link text-white hover:text-gray-200">Contact Us</a>
+                <a href="{{ route('login') }}" class="nav-link text-white hover:text-gray-200">Login</a>
+                <a href="{{ route('supplier.register') }}" class="ml-4 cta-btn px-5 py-2 rounded-md font-semibold">
+                    Register
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-1 main-bg flex items-center justify-center px-6 py-12">
+        <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <section class="flex justify-center">
+                <img src="{{ asset('images/S4.png') }}" alt="Supplier Business Illustration" class="w-full max-w-lg object-cover" loading="lazy">
+            </section>
+            <section class="text-center md:text-left">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-blue-800 mb-6">
+                    Supplier Registry
+                </h1>
+                <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                    Be among the first to see DepED Procurement News, Announcements and Bid Opportunities.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="{{ route('supplier.register') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg flex items-center gap-2 hover-animate">
+                        Register Now
+                    </a>
+                    <a href="{{ route('login') }}" class="border border-blue-600 text-blue-600 hover:bg-blue-100 font-semibold py-3 px-6 rounded-lg flex items-center gap-2 hover-animate">
+                        Login
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
