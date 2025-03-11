@@ -12,6 +12,8 @@
     <script defer src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         .hover-animate {
@@ -64,7 +66,9 @@
 <body class="font-sans antialiased h-screen flex flex-col min-h-screen">
     <nav class="nav-bg text-white shadow-md" style="padding: 8px 0 8px 0;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-            <a href="{{ route('welcome') }}" class="flex items-center space-x-2">
+            <!-- <a href="{{ route('welcome') }}" class="flex items-center space-x-2"> -->
+            <a href="http://20.188.121.247/" class="flex items-center space-x-2">
+                
                 <!-- <img src="{{ asset('images/DepEd-WLogo.png') }}" alt="Logo" class="h-12 max-h-12 w-auto"> -->
                 <img src="DepEd-WLogo.png" style="height: 3rem; max-height: 3rem; width: auto;">
                 <span class="text-2xl font-bold tracking-wide">
@@ -73,9 +77,14 @@
             </a>
 
             <div class="hidden sm:flex items-center space-x-6">
-                <a href="{{ route('contact') }}" class="nav-link text-white hover:text-gray-200">Contact Us</a>
+                <!-- <a href="{{ route('contact') }}" class="nav-link text-white hover:text-gray-200">Contact Us</a>
                 <a href="{{ route('login') }}" class="nav-link text-white hover:text-gray-200">Login</a>
                 <a href="{{ route('supplier.register') }}" class="ml-4 cta-btn px-5 py-2 rounded-md font-semibold">
+                    Register
+                </a> -->
+                <a href="http://20.188.121.247/contact" class="nav-link text-white hover:text-gray-200">Contact Us</a>
+                <a href="http://20.188.121.247/login" class="nav-link text-white hover:text-gray-200">Login</a>
+                <a href="http://20.188.121.247/supplier/register" class="ml-4 cta-btn px-5 py-2 rounded-md font-semibold">
                     Register
                 </a>
             </div>
@@ -85,7 +94,8 @@
     <main class="flex-1 main-bg flex items-center justify-center px-6 py-12">
         <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <section class="flex justify-center">
-                <img src="{{ asset('images/S4.png') }}" alt="Supplier Business Illustration" class="w-full max-w-lg object-cover" loading="lazy">
+                <!-- <img src="{{ asset('images/S4.png') }}" alt="Supplier Business Illustration" class="w-full max-w-lg object-cover" loading="lazy"> -->
+                <img src="S4.png" alt="Supplier Business Illustration" style="width: 100%; max-width: 32rem; object-fit: cover;" loading="lazy">
             </section>
             <section class="text-center md:text-left">
                 <h1 class="text-4xl md:text-5xl font-extrabold text-blue-800 mb-6">
@@ -95,10 +105,12 @@
                     Be among the first to see DepED Procurement News, Announcements and Bid Opportunities.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="{{ route('supplier.register') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg flex items-center gap-2 hover-animate">
+                    <!-- <a href="{{ route('supplier.register') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg flex items-center gap-2 hover-animate"> -->
+                    <a href="http://20.188.121.247/supplier/register" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg flex items-center gap-2 hover-animate">
                         Register Now
                     </a>
-                    <a href="{{ route('login') }}" class="border border-blue-600 text-blue-600 hover:bg-blue-100 font-semibold py-3 px-6 rounded-lg flex items-center gap-2 hover-animate">
+                    <!-- <a href="{{ route('login') }}" class="border border-blue-600 text-blue-600 hover:bg-blue-100 font-semibold py-3 px-6 rounded-lg flex items-center gap-2 hover-animate"> -->
+                    <a href="http://20.188.121.247/login" class="border border-blue-600 text-blue-600 hover:bg-blue-100 font-semibold py-3 px-6 rounded-lg flex items-center gap-2 hover-animate">
                         Login
                     </a>
                 </div>
