@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +14,13 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        .fade-in-body {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .fade-in-body.visible {
+            opacity: 1;
+        }
         .hover-animate {
             transition: transform 0.2s ease-in-out;
         }
@@ -22,7 +29,7 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased h-screen flex flex-col min-h-screen">
+<body class="font-sans antialiased h-screen flex flex-col bg-black min-h-screen fade-in-body">
     <nav class="bg-white border-b border-gray-200 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -47,8 +54,8 @@
     <main class="flex-1 bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center px-6">
         <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <section class="flex justify-center">
-                <!-- <img src="{{ asset('images/S4.png') }}" alt="Supplier Business Illustration" class="w-full max-w-lg object-cover" loading="lazy"> -->
-                <img src="S4.png" alt="Supplier Business Illustration" style="width: 100%; max-width: 32rem; object-fit: cover;" loading="lazy">
+                <!-- <img src="{{ asset('images/S5.png') }}" alt="Supplier Business Illustration" class="w-full max-w-lg object-cover" loading="lazy"> -->
+                <img src="S5.png" alt="Supplier Business Illustration" style="width: 100%; max-width: 32rem; object-fit: cover;" loading="lazy">
             </section>
             <section class="text-center md:text-left">
                 <h1 class="text-5xl font-extrabold text-indigo-900 mb-6">Supplier Registry</h1>
@@ -64,5 +71,11 @@
             </section>
         </div>
     </main>
+
+    <script>
+        window.onload = function() {
+            document.querySelector('.fade-in-body').classList.add('visible');
+        };
+    </script>
 </body>
 </html>
